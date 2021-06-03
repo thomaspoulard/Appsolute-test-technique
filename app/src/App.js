@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const articlesIdList = [];
-
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      articlesIdList: [],
       isLoaded: false
     }
   }
@@ -19,22 +17,23 @@ class App extends Component {
       .then(json => {
         this.setState({
           isLoaded: true,
-          items: json
+          articlesIdList: json
         })
       });
   }
 
   render() {
 
-    var { isLoaded, items } = this.state;
+    let { isLoaded, articlesIdList } = this.state;
 
     // Select the last 10 id and push the values into a new array
-    {items.slice(-10).reverse().forEach(item => {
-      articlesIdList.push(item)
-    })}
+    {articlesIdList.slice(-10).reverse().forEach(articleId => {
 
-    console.log(articlesIdList);
-    console.log("taille tableau : " + articlesIdList.length);
+      let articleUri = `https://hacker-news.firebaseio.com/v0/item/${articleId}.json?print=pretty`;
+
+      console.log(articleUri);
+
+    })}
 
     // RETOUR AFFICHAGE
 
