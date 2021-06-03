@@ -13,7 +13,6 @@ class App extends Component {
     }
   }
 
-  // Récupérer les données en json avec l'url, on les stocke dans la var ''items''
   componentDidMount() {
     fetch('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty')
       .then(res => res.json())
@@ -29,6 +28,7 @@ class App extends Component {
 
     var { isLoaded, items } = this.state;
 
+    // Select the last 10 id and push the values into a new array
     {items.slice(-10).reverse().forEach(articleId => {
       articlesIdList.push(articleId)
     })}
@@ -38,11 +38,12 @@ class App extends Component {
 
     // RETOUR AFFICHAGE
 
-    // Tant que les données du fetch ne peuvent pas s'afficher, on affiche un message de chargement
+    // While data fetched from the API is loading, displaying a loading message
     if (!isLoaded) {
       return <div>Data is loading....</div>;
     }
 
+    // Executes once data from the API has been loaded
     else {
       return (
           <div className="App">
