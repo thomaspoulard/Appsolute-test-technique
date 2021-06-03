@@ -26,14 +26,16 @@ class App extends Component {
 
     let { isLoaded, articlesIdList } = this.state;
 
-    // Select the last 10 id and push the values into a new array
-    {articlesIdList.slice(-10).reverse().forEach(articleId => {
-
+    // Select the last 10 id of the whole articlesIdList
+    {articlesIdList.slice(-10).reverse().map(articleId => {
       let articleUri = `https://hacker-news.firebaseio.com/v0/item/${articleId}.json?print=pretty`;
 
       console.log(articleUri);
 
     })}
+
+
+
 
     // RETOUR AFFICHAGE
 
