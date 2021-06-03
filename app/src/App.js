@@ -27,29 +27,28 @@ class App extends Component {
 
   render() {
 
-    var { isLoaded, items } = this.state
+    var { isLoaded, items } = this.state;
+
+    {items.slice(-10).reverse().forEach(articleId => {
+      articlesIdList.push(articleId)
+    })}
+
+    console.log(articlesIdList);
+    console.log("taille tableau : " + articlesIdList.length);
 
     // RETOUR AFFICHAGE
 
     // Tant que les données du fetch ne peuvent pas s'afficher, on affiche un message de chargement
     if (!isLoaded) {
-      return <div>Data is loading....</div>
+      return <div>Data is loading....</div>;
     }
 
     else {
-
-      for (var i = 1; i <= 10; i++) {
-        articlesIdList.push(items[i]);
-      }
-
-      console.log('tableau final');
-      console.log(articlesIdList);
-
       return (
           <div className="App">
             Les données ont été chargées avec succès!
           </div>
-      )
+      );
     }
   }
 }
