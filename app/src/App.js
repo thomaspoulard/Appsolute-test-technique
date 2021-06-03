@@ -29,8 +29,8 @@ class App extends Component {
     var { isLoaded, items } = this.state;
 
     // Select the last 10 id and push the values into a new array
-    {items.slice(-10).reverse().forEach(articleId => {
-      articlesIdList.push(articleId)
+    {items.slice(-10).reverse().forEach(item => {
+      articlesIdList.push(item)
     })}
 
     console.log(articlesIdList);
