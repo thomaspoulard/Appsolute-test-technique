@@ -40,6 +40,7 @@ export const ArticleList = () => {
           <li>{article.title}</li>
         ))}
       </ul>
+
     </div>
   )
 }
