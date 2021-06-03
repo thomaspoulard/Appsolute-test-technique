@@ -30,8 +30,8 @@ class App extends Component {
     var { isLoaded, items } = this.state;
 
     // On ajoute chaque élément du tableau items dans la variable articlesIdList
-    {items.forEach(element => {
-      articlesIdList.push(element)
+    {items.forEach(articleId => {
+      articlesIdList.push(articleId)
     })}
 
     // Tant que les données du fetch ne peuvent pas s'afficher, on affiche un message de chargement
