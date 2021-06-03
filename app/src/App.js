@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 
-let articleId;
-
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      articlesIdList: [],
-      article: [],
+      articles: [],
       isLoaded: false
     }
   }
@@ -17,36 +14,30 @@ class App extends Component {
   componentDidMount() {
 
     // Get all articles id from the uri
-    fetch('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty')
+    fetch('https://hacker-news.firebaseio.com/v0/newstories.json')
       .then(res => res.json())
-      .then(json => {
-        this.setState({
-          isLoaded: true,
-          articlesIdList: json
-        })
-      });
+      .then(articlesId => {
+        const articlePromiseList = articlesId.slice(-10)
+          .reverse()
+          .map(articleId => {
+            return fetch(`https://hacker-news.firebaseio.com/v0/item/${articleId}.json`)
+              .then(res => res.json())
+          });
 
-      fetch(`https://hacker-news.firebaseio.com/v0/item/${articleId}.json?print=pretty`)
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          isLoaded: true,
-          article: json
-        })
+        Promise.all(articlePromiseList)
+          .then(articleList => {
+            this.setState({
+              isLoaded: true,
+              articles: articleList
+            })
+
+          })
       });
   }
 
   render() {
 
-    let { isLoaded, articlesIdList } = this.state;
-
-
-    // Select the last 10 id and push the values into a new array
-    {articlesIdList.slice(-10).reverse().forEach(currentArticleId => {
-      articleId = currentArticleId;
-    })}
-
-    // RETOUR AFFICHAGE
+    const { isLoaded, articles } = this.state;
 
     // While data fetched from the API is loading, displaying a loading message
     if (!isLoaded) {
@@ -54,17 +45,19 @@ class App extends Component {
     }
 
     // Executes once data from the API has been loaded
-    else {
       return (
         <div className="App">
           Les données ont été chargées avec succès!
-        <br/>
-        <br/>
-          <div>{articleId}</div>
+
+          <ul>
+            {articles.map(article => (
+              <li>{article.title}</li>
+            ))}
+          </ul>
+
         </div>
       );
     }
-  }
 }
 
 export default App;
