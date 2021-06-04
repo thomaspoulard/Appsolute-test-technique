@@ -73,7 +73,7 @@ export const ArticleList = () => {
       <div>Top news!</div>
       <br/>
       {topArticles.map(topArticle => (
-          <Article subtitle={topArticle.by} url={topArticle.url} time={formatTime(topArticle.time)}>{topArticle.title}</Article>
+          <Article isTopArticle subtitle={topArticle.by} url={topArticle.url} time={formatTime(topArticle.time)} score={topArticle.score}>{topArticle.title}</Article>
         ))}
 
       <div>Latest news!</div>

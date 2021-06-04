@@ -29,14 +29,22 @@ const StyledTitle = styled('div')({
 
 const AuthorSubtitle = styled(StyledTitle)({
   fontSize: 15,
-  color: 'black',
-  marginRight: 20
+  color: 'black'
 })
 
 const DateSubtitle = styled(StyledTitle)({
   fontSize: 13,
   color: 'black',
-  opacity: '70%'
+  opacity: '70%',
+  marginLeft: 20
+})
+
+const RateSubtitle = styled(StyledTitle)({
+  fontSize: 13,
+  color: 'dark',
+  opacity: '70%',
+  fontWeight: 'bold',
+  marginLeft: 20
 })
 
 const Link = styled('a')({
@@ -53,10 +61,13 @@ export const Article = (props) => {
           <Subtitles>
             <AuthorSubtitle>By : {props.subtitle}</AuthorSubtitle>
             <DateSubtitle>Date : {props.time}</DateSubtitle>
+            {props.isTopArticle &&
+            <RateSubtitle>Score : {props.score}</RateSubtitle>
+            }
           </Subtitles>
           <br/>
         </Content>
       </Container>
     </>
-)
+  )
 }
