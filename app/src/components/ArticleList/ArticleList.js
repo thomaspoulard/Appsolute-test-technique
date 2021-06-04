@@ -28,10 +28,8 @@ export const ArticleList = () => {
             setIsLoading(false)
           })
       })
-  }, [])
 
-  // This portion of code fetches the 3 latest top stories from hacker-news
-  useEffect(() => {
+    // fetch last 3 top articles
     fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty') // fetch top article
       .then(res => res.json())
       .then(topArticlesId => {
