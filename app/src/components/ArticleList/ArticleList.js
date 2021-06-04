@@ -3,15 +3,16 @@ import { Article } from '../Article/Article'
 
 export const ArticleList = () => {
 
+  // useState hooks to manage states in the app
   const [articles, setArticles] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
+  // Formatting UNIX time to a readable date value
   function formatTime(s) {
     const dtFormat = new Intl.DateTimeFormat('fr-FR', {
       timeStyle: 'medium',
       timeZone: 'UTC'
     });
-
     return dtFormat.format(new Date(s * 1e3));
   }
 
