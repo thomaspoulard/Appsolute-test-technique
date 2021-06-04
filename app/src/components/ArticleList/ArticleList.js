@@ -8,15 +8,6 @@ export const ArticleList = () => {
   const [topArticles, setTopArticles] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  // Formatting UNIX time to a readable date value
-  function formatTime(s) {
-    const dtFormat = new Intl.DateTimeFormat('fr-FR', {
-      timeStyle: 'medium',
-      timeZone: 'UTC'
-    });
-    return dtFormat.format(new Date(s * 1e3));
-  }
-
   // UseEffect is called the first time the page is loaded, and everytime its dependencies are updated
   // This portion of code fetches the 10 latest articles from hacker-news
   useEffect(() => {
@@ -37,7 +28,7 @@ export const ArticleList = () => {
             setIsLoading(false)
           })
       })
-  }, []);
+  }, [])
 
   // This portion of code fetches the 3 latest top stories from hacker-news
   useEffect(() => {
@@ -58,7 +49,7 @@ export const ArticleList = () => {
             setIsLoading(false)
           })
       })
-  }, []);
+  }, [])
 
   // While data is loading, displays a loading message
   if (isLoading) {
@@ -73,13 +64,14 @@ export const ArticleList = () => {
       <div>Top news!</div>
       <br/>
       {topArticles.map(topArticle => (
-          <Article isTopArticle subtitle={topArticle.by} url={topArticle.url} time={formatTime(topArticle.time)} score={topArticle.score}>{topArticle.title}</Article>
-        ))}
+        <Article isTopArticle title={topArticle.title} author={topArticle.by} url={topArticle.url}
+                 time={topArticle.time} score={topArticle.score}/>
+      ))}
 
       <div>Latest news!</div>
       <br/>
       {articles.map(article => (
-        <Article subtitle={article.by} url={article.url} time={formatTime(article.time)}>{article.title}</Article>
+        <Article title={article.title} author={article.by} url={article.url} time={article.time}/>
       ))}
     </div>
   )

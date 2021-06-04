@@ -52,15 +52,25 @@ const Link = styled('a')({
   textDecoration: 'none'
 })
 
+// Formatting UNIX time to a readable date value
+const formatDate = (timestamp) => {
+  return new Date(timestamp * 1000).toLocaleDateString('fr-FR')
+}
+
+/**
+ * Displays a hacker news article with data (author, date, score if a top article..)
+ * @param props
+ * @returns {JSX.Element}
+ */
 export const Article = (props) => {
   return (
     <>
       <Container>
         <Content>
-          <Link href={props.url}><StyledTitle>{props.children}</StyledTitle></Link>
+          <Link href={props.url}><StyledTitle>{props.title}</StyledTitle></Link>
           <Subtitles>
-            <AuthorSubtitle>By : {props.subtitle}</AuthorSubtitle>
-            <DateSubtitle>Date : {props.time}</DateSubtitle>
+            <AuthorSubtitle>By : {props.author}</AuthorSubtitle>
+            <DateSubtitle>Date : {formatDate(props.time)}</DateSubtitle>
             {props.isTopArticle &&
             <RateSubtitle>Score : {props.score}</RateSubtitle>
             }
