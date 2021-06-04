@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Article } from '../Article/Article'
 
 export const ArticleList = () => {
 
@@ -33,13 +34,11 @@ export const ArticleList = () => {
 
   return (
     <div>
-      Les données ont été chargées avec succès!
+      Les données ont été chargées avec succès!<br/>
 
-      <ul>
-        {articles.map(article => (
-          <li>{article.title}</li>
-        ))}
-      </ul>
+      {articles.map(article => (
+        <Article subtitle={article.by} url={article.url}>{article.title}</Article>
+      ))}
 
     </div>
   )
