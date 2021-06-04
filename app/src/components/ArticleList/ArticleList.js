@@ -15,32 +15,35 @@ export const ArticleList = () => {
     return dtFormat.format(new Date(s * 1e3));
   }
 
+  // UseEffect is called the first time the page is loaded, and everytime its dependencies are updated
   useEffect(() => {
-    fetch('https://hacker-news.firebaseio.com/v0/newstories.json')
+    fetch('https://hacker-news.firebaseio.com/v0/newstories.json') // fetch all articleId
       .then(res => res.json())
       .then(articlesId => {
-        const articlePromiseList = articlesId.slice(-10)
+        const articlePromiseList = articlesId.slice(-10) // Get last 10 articles
           .reverse()
           .map(articleId => {
-            return fetch(`https://hacker-news.firebaseio.com/v0/item/${articleId}.json`)
+            return fetch(`https://hacker-news.firebaseio.com/v0/item/${articleId}.json`) // fetch 1 article with articleId as a variable
               .then(res => res.json())
           })
 
+        // Executes the promises in articlePromiseList
         Promise.all(articlePromiseList)
           .then(articleList => {
             setArticles(articleList)
             setIsLoading(false)
           })
       })
-
   }, []);
 
+  // While data is loading, displays a loading message
   if (isLoading) {
     return (
       <div>Data is loading....</div>
     )
   }
 
+  // Executes only if isLoading is false (data loaded)
   return (
     <div>
       <div>Latest news!</div>
