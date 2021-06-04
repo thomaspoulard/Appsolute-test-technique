@@ -6,6 +6,15 @@ export const ArticleList = () => {
   const [articles, setArticles] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
+  function formatTime(s) {
+    const dtFormat = new Intl.DateTimeFormat('fr-FR', {
+      timeStyle: 'medium',
+      timeZone: 'UTC'
+    });
+
+    return dtFormat.format(new Date(s * 1e3));
+  }
+
   useEffect(() => {
     fetch('https://hacker-news.firebaseio.com/v0/newstories.json')
       .then(res => res.json())
@@ -32,18 +41,9 @@ export const ArticleList = () => {
     )
   }
 
-  function formatTime(s) {
-    const dtFormat = new Intl.DateTimeFormat('fr-FR', {
-      timeStyle: 'medium',
-      timeZone: 'UTC'
-    });
-
-    return dtFormat.format(new Date(s * 1e3));
-  }
-
   return (
     <div>
-      <h1>Les données ont été chargées avec succès!</h1>
+      <div>Latest news!</div>
       <br/>
       {articles.map(article => (
         <Article subtitle={article.by} url={article.url} time={formatTime(article.time)}>{article.title}</Article>
