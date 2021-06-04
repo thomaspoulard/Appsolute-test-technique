@@ -1,5 +1,5 @@
 import React from 'react'
-import {styled} from '@material-ui/core/styles'
+import { styled } from '@material-ui/core/styles'
 
 const Container = styled('div')({
   display: 'flex',
@@ -16,13 +16,25 @@ const Content = styled('div')({
   flexDirection: 'column'
 })
 
+const Subtitles = styled(Content)({
+  display: 'flex',
+  flexGrow: 2,
+  flexDirection: 'row'
+})
+
 const StyledTitle = styled('div')({
   fontSize: 16
 })
 
-const Subtitle = styled(StyledTitle)({
+const AuthorSubtitle = styled(StyledTitle)({
   fontSize: 14,
-  color: 'green'
+  color: 'black'
+})
+
+const DateSubtitle = styled(StyledTitle)({
+  fontSize: 14,
+  color: 'black',
+  opacity: '70%'
 })
 
 const Link = styled('a')({
@@ -32,12 +44,15 @@ const Link = styled('a')({
 
 export const Article = (props) => {
   return (
-      <Container>
-        <Content>
-          <Link href={props.url}><StyledTitle>{props.children}</StyledTitle></Link>
-          <Subtitle>{props.subtitle}</Subtitle>
-          <br/>
-        </Content>
-      </Container>
+    <Container>
+      <Content>
+        <Link href={props.url}><StyledTitle>{props.children}</StyledTitle></Link>
+        <Subtitles>
+          <AuthorSubtitle>By : {props.subtitle}</AuthorSubtitle>
+          <DateSubtitle>Date : {props.time}</DateSubtitle>
+        </Subtitles>
+        <br/>
+      </Content>
+    </Container>
   )
 }
