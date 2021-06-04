@@ -32,7 +32,7 @@ export const ArticleList = () => {
     )
   }
 
-  function Format_Time(s) {
+  function formatTime(s) {
     const dtFormat = new Intl.DateTimeFormat('fr-FR', {
       timeStyle: 'medium',
       timeZone: 'UTC'
@@ -47,7 +47,7 @@ export const ArticleList = () => {
       <br/>
 
       {articles.map(article => (
-        <Article subtitle={article.by} url={article.url} time={Format_Time(article.time)}>{article.title}</Article>
+        <Article subtitle={article.by} url={article.url} time={formatTime(article.time)}>{article.title}</Article>
       ))}
 
     </div>
