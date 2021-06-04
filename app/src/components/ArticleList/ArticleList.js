@@ -5,6 +5,7 @@ export const ArticleList = () => {
 
   // useState hooks to manage states in the app
   const [articles, setArticles] = useState([])
+  const [topArticles, setTopArticles] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   // Formatting UNIX time to a readable date value
@@ -37,6 +38,26 @@ export const ArticleList = () => {
       })
   }, []);
 
+  useEffect(() => {
+    fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty') // fetch top article
+      .then(res => res.json())
+      .then(topArticlesId => {
+        const topArticlePromiseList = topArticlesId.slice(-3) // Get latest 3 top articles
+          .reverse()
+          .map(topArticleId => {
+            return fetch(`https://hacker-news.firebaseio.com/v0/item/${topArticleId}.json`) // fetch 1 top article with articleId as a variable
+              .then(res => res.json())
+          })
+
+        // Executes the promises in articlePromiseList
+        Promise.all(topArticlePromiseList)
+          .then(topArticleList => {
+            setTopArticles(topArticleList)
+            setIsLoading(false)
+          })
+      })
+  }, []);
+
   // While data is loading, displays a loading message
   if (isLoading) {
     return (
@@ -47,6 +68,12 @@ export const ArticleList = () => {
   // Executes only if isLoading is false (data loaded)
   return (
     <div>
+      <div>Top news!</div>
+      <br/>
+      {topArticles.map(topArticle => (
+          <Article subtitle={topArticle.by} url={topArticle.url} time={formatTime(topArticle.time)}>{topArticle.title}</Article>
+        ))}
+
       <div>Latest news!</div>
       <br/>
       {articles.map(article => (
