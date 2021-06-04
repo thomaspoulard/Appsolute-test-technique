@@ -25,12 +25,12 @@ const Subtitles = styled(Content)({
 
 const StyledTitle = styled('div')({
   fontSize: 16,
-  marginRight: 50
 })
 
 const AuthorSubtitle = styled(StyledTitle)({
   fontSize: 15,
   color: 'black',
+  marginRight: 20
 })
 
 const DateSubtitle = styled(StyledTitle)({
