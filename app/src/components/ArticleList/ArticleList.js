@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Article } from '../Article/Article'
 
-function Format_Time(s) {
-  const dtFormat = new Intl.DateTimeFormat('fr-FR', {
-    timeStyle: 'medium',
-    timeZone: 'UTC'
-  });
-
-  return dtFormat.format(new Date(s * 1e3));
-}
-
 export const ArticleList = () => {
 
   const [articles, setArticles] = useState([])
@@ -39,6 +30,15 @@ export const ArticleList = () => {
     return (
       <div>Data is loading....</div>
     )
+  }
+
+  function Format_Time(s) {
+    const dtFormat = new Intl.DateTimeFormat('fr-FR', {
+      timeStyle: 'medium',
+      timeZone: 'UTC'
+    });
+
+    return dtFormat.format(new Date(s * 1e3));
   }
 
   return (

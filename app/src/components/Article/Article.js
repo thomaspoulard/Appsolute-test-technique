@@ -23,7 +23,8 @@ const Subtitles = styled(Content)({
 })
 
 const StyledTitle = styled('div')({
-  fontSize: 16
+  fontSize: 16,
+  marginRight: 50
 })
 
 const AuthorSubtitle = styled(StyledTitle)({
@@ -44,15 +45,17 @@ const Link = styled('a')({
 
 export const Article = (props) => {
   return (
-    <Container>
-      <Content>
-        <Link href={props.url}><StyledTitle>{props.children}</StyledTitle></Link>
-        <Subtitles>
-          <AuthorSubtitle>By : {props.subtitle}</AuthorSubtitle>
-          <DateSubtitle>Date : {props.time}</DateSubtitle>
-        </Subtitles>
-        <br/>
-      </Content>
-    </Container>
-  )
+    <>
+      <Container>
+        <Content>
+          <Link href={props.url}><StyledTitle>{props.children}</StyledTitle></Link>
+          <Subtitles>
+            <AuthorSubtitle>By : {props.subtitle}</AuthorSubtitle>
+            <DateSubtitle>Date : {props.time}</DateSubtitle>
+          </Subtitles>
+          <br/>
+        </Content>
+      </Container>
+    </>
+)
 }
