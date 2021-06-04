@@ -13,7 +13,8 @@ const Container = styled('div')({
 const Content = styled('div')({
   display: 'flex',
   flexGrow: 1,
-  flexDirection: 'column'
+  flexDirection: 'column',
+  padding: '5px 0 0 10px'
 })
 
 const Subtitles = styled(Content)({
@@ -28,12 +29,12 @@ const StyledTitle = styled('div')({
 })
 
 const AuthorSubtitle = styled(StyledTitle)({
-  fontSize: 14,
-  color: 'black'
+  fontSize: 15,
+  color: 'black',
 })
 
 const DateSubtitle = styled(StyledTitle)({
-  fontSize: 14,
+  fontSize: 13,
   color: 'black',
   opacity: '70%'
 })

@@ -43,7 +43,8 @@ export const ArticleList = () => {
 
   return (
     <div>
-      Les données ont été chargées avec succès!<br/>
+      <h1>Les données ont été chargées avec succès!</h1>
+      <br/>
 
       {articles.map(article => (
         <Article subtitle={article.by} url={article.url} time={Format_Time(article.time)}>{article.title}</Article>
