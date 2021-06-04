@@ -6,7 +6,7 @@ const Background = styled('div')({
   alignItems: 'center',
   justifyContent: 'center',
   height: '100%',
-  background: `#F36523`
+  background: 'white'
 })
 
 const Container = styled('div')({
