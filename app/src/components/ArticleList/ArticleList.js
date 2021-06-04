@@ -18,6 +18,7 @@ export const ArticleList = () => {
   }
 
   // UseEffect is called the first time the page is loaded, and everytime its dependencies are updated
+  // This portion of code fetches the 10 latest articles from hacker-news
   useEffect(() => {
     fetch('https://hacker-news.firebaseio.com/v0/newstories.json') // fetch all articleId
       .then(res => res.json())
@@ -38,6 +39,7 @@ export const ArticleList = () => {
       })
   }, []);
 
+  // This portion of code fetches the 3 latest top stories from hacker-news
   useEffect(() => {
     fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty') // fetch top article
       .then(res => res.json())
