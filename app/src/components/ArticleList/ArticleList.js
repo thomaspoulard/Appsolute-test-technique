@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Article } from '../Article/Article'
 import { styled } from '@material-ui/core/styles'
+import { Article } from '../Article/Article'
+import { Title } from '../Title/Title'
 
 const Content = styled('div')({
   display: 'grid',
@@ -68,7 +69,7 @@ export const ArticleList = () => {
   return (
     <Content>
       <div>
-        <div>Top news!</div>
+        <Title>Top news!</Title>
         <br/>
         {topArticles.map(topArticle => (
           <Article isTopArticle title={topArticle.title} author={topArticle.by} url={topArticle.url}
@@ -79,7 +80,7 @@ export const ArticleList = () => {
       <gap/>
 
       <div>
-        <div>Latest news!</div>
+        <Title>Latest news!</Title>
         <br/>
         {articles.map(article => (
           <Article title={article.title} author={article.by} url={article.url} time={article.time}/>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { styled } from '@material-ui/core/styles'
+import PermIdentityIcon from '@material-ui/icons/PermIdentity'
 
 const Container = styled('div')({
   display: 'flex',
@@ -13,14 +14,14 @@ const Content = styled('div')({
   padding: '5px 0 0 10px'
 })
 
-const TitleLink = styled('a')({
-  color: 'black',
-  textDecoration: 'none'
-})
-
 const Subtitles = styled(Content)({
   display: 'flex',
   flexDirection: 'row'
+})
+
+const StyledLink = styled('a')({
+  color: 'black',
+  textDecoration: 'none'
 })
 
 const StyledTitle = styled('div')({
@@ -60,10 +61,13 @@ export const Article = (props) => {
     <>
       <Container>
         <Content>
-          <TitleLink href={props.url}><StyledTitle>{props.title}</StyledTitle></TitleLink>
+          <StyledLink href={props.url}><StyledTitle>{props.title}</StyledTitle></StyledLink>
           <Subtitles>
-            <AuthorSubtitle>By : {props.author}</AuthorSubtitle>
-            <DateSubtitle>Date : {formatDate(props.time)}</DateSubtitle>
+            <AuthorSubtitle>
+              <PermIdentityIcon/>
+              {props.author}
+            </AuthorSubtitle>
+            <DateSubtitle>{formatDate(props.time)}</DateSubtitle>
             {props.isTopArticle &&
             <RateSubtitle>Score : {props.score}</RateSubtitle>
             }
