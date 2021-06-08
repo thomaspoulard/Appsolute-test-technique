@@ -6,10 +6,16 @@ import { Title } from '../Title/Title'
 const Content = styled('div')({
   display: 'grid',
   gridTemplateColumns: '[new-stories-start] auto [new-stories-end top-stories-start] auto [top-stories-end]',
-  gridRow: 'content-start / content-end',
-  justifyContent: 'space-between',
-  height: '100%',
-  margin: '50px 0 0 0'
+  columnGap: '25%',
+  margin: '50px 15% 0 15%'
+})
+
+const NewStoriesContainer = styled('div')({
+  gridColumn: 'new-stories-start / new-stories-end'
+})
+
+const TopStoriesContainer = styled('div')({
+  gridColumn: 'top-stories-start / top-stories-end'
 })
 
 export const ArticleList = () => {
@@ -71,22 +77,22 @@ export const ArticleList = () => {
   return (
     <Content>
 
-      <div>
+      <NewStoriesContainer>
         <Title>Latest news!</Title>
         <br/>
         {articles.map(article => (
           <Article title={article.title} author={article.by} url={article.url} time={article.time}/>
         ))}
-      </div>
+      </NewStoriesContainer>
 
-      <div>
+      <TopStoriesContainer>
         <Title>Top news!</Title>
         <br/>
         {topArticles.map(topArticle => (
           <Article isTopArticle title={topArticle.title} author={topArticle.by} url={topArticle.url}
                    time={topArticle.time} score={topArticle.score}/>
         ))}
-      </div>
+      </TopStoriesContainer>
 
     </Content>
   )
