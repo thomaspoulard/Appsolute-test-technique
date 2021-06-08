@@ -4,13 +4,13 @@ import { styled } from '@material-ui/core/styles'
 const Background = styled('div')({
   display: 'grid',
   gridTemplateRows: '[header-start] 200px [header-end content-start] auto [content-end]',
-  background: 'white',
-  margin: '0 300px 0 300px'
+  background: '#F6F6EF',
 })
 
 const StyledImage = styled('img')({
   justifySelf: 'center',
-  margin: '25px 0 0 0'
+  margin: '25px 0 0 0',
+  gridRow: 'header-start / header-end'
 })
 
 export const Layout = (props) => {
