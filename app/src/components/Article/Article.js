@@ -4,22 +4,22 @@ import { styled } from '@material-ui/core/styles'
 const Container = styled('div')({
   display: 'flex',
   fontFamily: 'roboto, sans-serif',
-  cursor: 'pointer',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: '#F6F6EF'
+  background: 'lightblue'
 })
 
 const Content = styled('div')({
   display: 'flex',
-  flexGrow: 1,
   flexDirection: 'column',
   padding: '5px 0 0 10px'
 })
 
+const TitleLink = styled('a')({
+  color: 'black',
+  textDecoration: 'none'
+})
+
 const Subtitles = styled(Content)({
   display: 'flex',
-  flexGrow: 2,
   flexDirection: 'row'
 })
 
@@ -36,7 +36,6 @@ const DateSubtitle = styled(StyledTitle)({
   fontSize: 13,
   color: 'black',
   opacity: '70%',
-  marginLeft: 20
 })
 
 const RateSubtitle = styled(StyledTitle)({
@@ -44,12 +43,6 @@ const RateSubtitle = styled(StyledTitle)({
   color: 'dark',
   opacity: '70%',
   fontWeight: 'bold',
-  marginLeft: 20
-})
-
-const Link = styled('a')({
-  color: 'black',
-  textDecoration: 'none'
 })
 
 // Formatting UNIX time to a readable date value
@@ -67,7 +60,7 @@ export const Article = (props) => {
     <>
       <Container>
         <Content>
-          <Link href={props.url}><StyledTitle>{props.title}</StyledTitle></Link>
+          <TitleLink href={props.url}><StyledTitle>{props.title}</StyledTitle></TitleLink>
           <Subtitles>
             <AuthorSubtitle>By : {props.author}</AuthorSubtitle>
             <DateSubtitle>Date : {formatDate(props.time)}</DateSubtitle>

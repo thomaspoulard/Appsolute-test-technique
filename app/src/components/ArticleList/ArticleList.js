@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Article } from '../Article/Article'
+import { styled } from '@material-ui/core/styles'
+
+const Content = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: '[new-stories-start] auto [new-stories-end gap-start] 15% [gap-end top-stories-start] auto [top-stories-end]',
+  gridRow: 'content-start / content-end',
+  height: '100%'
+})
 
 export const ArticleList = () => {
 
@@ -58,19 +66,26 @@ export const ArticleList = () => {
 
   // Executes only if isLoading is false (data loaded)
   return (
-    <div>
-      <div>Top news!</div>
-      <br/>
-      {topArticles.map(topArticle => (
-        <Article isTopArticle title={topArticle.title} author={topArticle.by} url={topArticle.url}
-                 time={topArticle.time} score={topArticle.score}/>
-      ))}
+    <Content>
+      <div>
+        <div>Top news!</div>
+        <br/>
+        {topArticles.map(topArticle => (
+          <Article isTopArticle title={topArticle.title} author={topArticle.by} url={topArticle.url}
+                   time={topArticle.time} score={topArticle.score}/>
+        ))}
+      </div>
 
-      <div>Latest news!</div>
-      <br/>
-      {articles.map(article => (
-        <Article title={article.title} author={article.by} url={article.url} time={article.time}/>
-      ))}
-    </div>
+      <gap/>
+
+      <div>
+        <div>Latest news!</div>
+        <br/>
+        {articles.map(article => (
+          <Article title={article.title} author={article.by} url={article.url} time={article.time}/>
+        ))}
+      </div>
+
+    </Content>
   )
 }
