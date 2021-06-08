@@ -5,9 +5,11 @@ import { Title } from '../Title/Title'
 
 const Content = styled('div')({
   display: 'grid',
-  gridTemplateColumns: '[new-stories-start] auto [new-stories-end gap-start] 15% [gap-end top-stories-start] auto [top-stories-end]',
+  gridTemplateColumns: '[new-stories-start] auto [new-stories-end top-stories-start] auto [top-stories-end]',
   gridRow: 'content-start / content-end',
-  height: '100%'
+  justifyContent: 'space-between',
+  height: '100%',
+  margin: '50px 0 0 0'
 })
 
 export const ArticleList = () => {
@@ -68,22 +70,21 @@ export const ArticleList = () => {
   // Executes only if isLoading is false (data loaded)
   return (
     <Content>
-      <div>
-        <Title>Top news!</Title>
-        <br/>
-        {topArticles.map(topArticle => (
-          <Article isTopArticle title={topArticle.title} author={topArticle.by} url={topArticle.url}
-                   time={topArticle.time} score={topArticle.score}/>
-        ))}
-      </div>
-
-      <gap/>
 
       <div>
         <Title>Latest news!</Title>
         <br/>
         {articles.map(article => (
           <Article title={article.title} author={article.by} url={article.url} time={article.time}/>
+        ))}
+      </div>
+
+      <div>
+        <Title>Top news!</Title>
+        <br/>
+        {topArticles.map(topArticle => (
+          <Article isTopArticle title={topArticle.title} author={topArticle.by} url={topArticle.url}
+                   time={topArticle.time} score={topArticle.score}/>
         ))}
       </div>
 

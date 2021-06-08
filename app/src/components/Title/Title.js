@@ -4,7 +4,7 @@ import {styled} from '@material-ui/core/styles'
 const StyledTitle = styled('div')({
     color: 'black',
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: 'roboto, sans-serif',
     fontSize: 34
 })
 
