@@ -3,24 +3,15 @@ import { styled } from '@material-ui/core/styles'
 import { Title } from '../Title/Title'
 import { ArticleList } from '../ArticleList/ArticleList'
 import { Layout } from '../Layout/Layout'
-
-const Content = styled('div')({
-  display: 'grid',
-  gridTemplateColumns: '[new-stories-start] auto [new-stories-end top-stories-start] auto [top-stories-end]',
-  columnGap: '25%',
-  margin: '50px 15% 0 15%'
-})
+import './ArticlePage.css'
 
 const NewStoriesContainer = styled('div')({
   display: 'flex',
-  flexDirection: 'column',
-  gridColumn: 'new-stories-start / new-stories-end',
-
+  flexDirection: 'column'
 })
 
 const TopStoriesContainer = styled(NewStoriesContainer)({
-  display: 'flex',
-  gridColumn: 'top-stories-start / top-stories-end',
+  display: 'flex'
 })
 
 export const ArticlePage = () => {
@@ -80,19 +71,19 @@ export const ArticlePage = () => {
   // Executes only if isLoading is false (data loaded)
   return (
     <Layout>
-      <Content>
+      <div id={'content'}>
 
-        <NewStoriesContainer>
+        <NewStoriesContainer id={'newStoriesContainer'}>
           <Title>Latest news!</Title>
           <ArticleList articles={articles}/>
         </NewStoriesContainer>
 
-        <TopStoriesContainer>
+        <TopStoriesContainer id={'topStoriesContainer'}>
           <Title>Top news!</Title>
           <ArticleList isTopArticle articles={topArticles}/>
         </TopStoriesContainer>
 
-      </Content>
+      </div>
     </Layout>
   )
 }

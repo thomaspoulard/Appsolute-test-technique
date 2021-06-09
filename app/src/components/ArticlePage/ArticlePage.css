@@ -1,0 +1,36 @@
+#content {
+    display: grid;
+    grid-template-areas:
+    "new-stories top-stories";
+    column-gap: 25%;
+    margin: 50px auto 20px auto;
+    max-width: 1000px;
+}
+
+#newStoriesContainer {
+    grid-column: new-stories;
+}
+
+#topStoriesContainer {
+    grid-column: top-stories;
+}
+
+@media screen and (max-width: 480px) {
+    #content {
+        grid-template-areas:
+        "new-stories"
+        "top-stories";
+        column-gap: unset;
+        row-gap: 2%;
+        margin: unset;
+        justify-items: center;
+    }
+
+    #newStoriesContainer {
+        grid-column: content;
+    }
+
+    #topStoriesContainer {
+        grid-column: content;
+    }
+}
