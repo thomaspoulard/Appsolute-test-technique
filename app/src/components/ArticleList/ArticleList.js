@@ -2,9 +2,6 @@ import React from 'react'
 import { Article } from '../Article/Article'
 import { styled } from '@material-ui/core/styles'
 
-const StyledArticleList = styled('div')({
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.14), 0 3px 4px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.2)'
-})
 
 export const ArticleList = ({ articles, isTopArticle }) => {
   return (
@@ -18,3 +15,6 @@ export const ArticleList = ({ articles, isTopArticle }) => {
 }
 
 
+const StyledArticleList = styled('div')({
+  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.14), 0 3px 4px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.2)'
+})
