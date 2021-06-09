@@ -1,10 +1,11 @@
 #content {
     display: grid;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
     "new-stories top-stories";
-    column-gap: 25%;
     margin: 50px auto 20px auto;
     max-width: 1000px;
+    column-gap: 10%;
 }
 
 #newStoriesContainer {
@@ -15,14 +16,14 @@
     grid-column: top-stories;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     #content {
         grid-template-areas:
         "new-stories"
         "top-stories";
         column-gap: unset;
         row-gap: 2%;
-        margin: unset;
+        margin: 0 50px 0 50px;
         justify-items: center;
     }
 
