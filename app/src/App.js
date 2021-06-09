@@ -1,12 +1,9 @@
 import React from 'react'
-import { ArticleList } from './components/ArticleList/ArticleList'
-import { Layout } from './components/Layout/Layout'
+import { ArticlePage } from './components/ArticlePage/ArticlePage'
 
 const App = () => {
   return (
-    <Layout>
-      <ArticleList/>
-    </Layout>
+    <ArticlePage/>
   )
 }
 
