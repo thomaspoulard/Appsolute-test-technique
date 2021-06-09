@@ -24,7 +24,6 @@ const TopStoriesContainer = styled(NewStoriesContainer)({
 })
 
 export const ArticlePage = () => {
-  
 // useState hooks to manage states in the app
   const [articles, setArticles] = useState([])
   const [topArticles, setTopArticles] = useState([])

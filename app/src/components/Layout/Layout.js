@@ -16,13 +16,13 @@ const StyledImage = styled('img')({
 export const Layout = (props) => {
   return (
     <Background>
-        <StyledImage
-          width={'490'}
-          height={'175'}
-          src='https://apifriends.com/wp-content/uploads/2018/08/hacker-news.jpg'
-          alt='hacker news'
-        />
-        {props.children}
+      <StyledImage
+        width={'490'}
+        height={'175'}
+        src="https://apifriends.com/wp-content/uploads/2018/08/hacker-news.jpg"
+        alt="hacker news"
+      />
+      {props.children}
     </Background>
   )
 }

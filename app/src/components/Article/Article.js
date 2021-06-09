@@ -18,8 +18,7 @@ const Content = styled('div')({
   padding: '5px 10px 0 10px'
 })
 
-const Paragraphe = styled('div')({
-})
+const Paragraphe = styled('div')({})
 
 const Subtitles = styled(Content)({
   display: 'flex',
@@ -82,7 +81,9 @@ export const Article = (props) => {
           <StyledLink href={props.url}><StyledTitle>{props.title}</StyledTitle></StyledLink>
 
           <Paragraphe>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus, dui eu fermentum dignissim, enim justo consequat tellus, at bibendum leo libero et dui. Nam elementum lobortis tellus, in sagittis erat maximus sed. Nullam sapien sapien, malesuada et nunc feugiat, feugiat rutrum mauris.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus, dui eu fermentum dignissim, enim justo
+            consequat tellus, at bibendum leo libero et dui. Nam elementum lobortis tellus, in sagittis erat maximus
+            sed. Nullam sapien sapien, malesuada et nunc feugiat, feugiat rutrum mauris.
           </Paragraphe>
 
           <Subtitles>
@@ -91,14 +92,14 @@ export const Article = (props) => {
               By : {props.author}
             </AuthorSubtitle>
 
-            <ScheduleIcon fontSize={'inherit'} />
+            <ScheduleIcon fontSize={'inherit'}/>
             <DateSubtitle>{formatDate(props.time)}</DateSubtitle>
 
             {props.isTopArticle &&
-              <>
-                <GradeIcon fontSize={'inherit'}/>
-                <RateSubtitle>Score : {props.score}</RateSubtitle>
-              </>
+            <>
+              <GradeIcon fontSize={'inherit'}/>
+              <RateSubtitle>Score : {props.score}</RateSubtitle>
+            </>
             }
           </Subtitles>
 
