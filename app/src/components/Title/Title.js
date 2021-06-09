@@ -5,7 +5,8 @@ const StyledTitle = styled('div')({
     color: 'black',
     textAlign: 'center',
     fontFamily: 'roboto, sans-serif',
-    fontSize: 34
+    fontSize: 34,
+    marginBottom: 14
 })
 
 export const Title = (props) => {
